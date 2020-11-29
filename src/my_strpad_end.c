@@ -9,7 +9,7 @@
 void my_strpad_end(char *dest, char pattern, int size)
 {
     int i = my_strlen(dest);
-    if (i < size) {
+    if (i >= size) {
         dest[size] = '\0';
         return;
     }
@@ -17,4 +17,5 @@ void my_strpad_end(char *dest, char pattern, int size)
         dest[i] = pattern;
         i++;
     }
+    dest[i] = '\0';
 }

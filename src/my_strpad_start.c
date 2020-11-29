@@ -6,6 +6,7 @@
 */
 #include <my.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 void my_strpad_start(char *dest, char pattern, int size)
 {
@@ -14,10 +15,13 @@ void my_strpad_start(char *dest, char pattern, int size)
     int dest_len = my_strlen(dest);
     int fill_len = size - dest_len;
 
-    while (i < fill_len) {
-        dest[i] = pattern;
-        i++;
+    if (fill_len > 0) {
+        while (i < fill_len) {
+            dest[i] = pattern;
+            i++;
+        }
     }
+    dest[i] = '\0';
     my_strncat(dest, dup, dest_len);
     free(dup);
     if (size < dest_len)
