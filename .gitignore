@@ -1,0 +1,4 @@
+vgcore.*
+unit_tests
+*.o
+.git
