@@ -41,4 +41,14 @@ void my_swap_node_and_next(void **head, void *a);
 
 void my_unshift_node(void **head, void *element);
 
+static inline void my_prepend_node(void **head, void *element)
+{
+    my_unshift_node(head, element);
+}
+
+static inline void my_append_node(void **head, void *element)
+{
+    my_push_node(head, element);
+}
+
 #endif //MY_LINKED_LIST_H
