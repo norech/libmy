@@ -8,12 +8,13 @@
 #include <defmy.h>
 #include <my.h>
 
-int my_count_nodes(linked_list_t **head)
+int my_count_nodes(void **head_ptr)
 {
     int i = 0;
-    linked_list_t *current;
+    linked_list_t *head = *head_ptr;
+    linked_list_t *current = NULL;
 
-    FOREACH_NODE(*head, current)
+    FOREACH_NODE(head, current)
         i++;
     return (i);
 }

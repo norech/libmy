@@ -7,12 +7,13 @@
 #include <my_linked_list.h>
 #include <defmy.h>
 
-void my_push_node(linked_list_t **head, linked_list_t *element)
+void my_push_node(void **head_ptr, void *element)
 {
-    linked_list_t *current = *head;
+    linked_list_t *head = *head_ptr;
+    linked_list_t *current = head;
 
-    if (*head == NULL) {
-        *head = element;
+    if (*head_ptr == NULL) {
+        *head_ptr = element;
         return;
     }
     while (current->next != NULL)

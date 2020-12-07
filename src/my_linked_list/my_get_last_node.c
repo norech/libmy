@@ -7,10 +7,12 @@
 #include <my_linked_list.h>
 #include <defmy.h>
 
-linked_list_t *my_get_last_node(linked_list_t **head)
+void *my_get_last_node(void **head)
 {
     linked_list_t *current = *head;
 
+    if (current == NULL)
+        return (NULL);
     while (current->next != NULL)
         current = current->next;
     return (current);

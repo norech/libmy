@@ -6,8 +6,9 @@
 */
 #include <my_linked_list.h>
 
-void my_unshift_node(linked_list_t **head, linked_list_t *element)
+void my_unshift_node(void **head, void *element_ptr)
 {
+    linked_list_t *element = element_ptr;
     element->next = *head;
     *head = element;
 }

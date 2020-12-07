@@ -7,13 +7,14 @@
 #include <my_linked_list.h>
 #include <defmy.h>
 
-int my_get_node_index(linked_list_t **head, linked_list_t *element)
+int my_get_node_index(void **head_ptr, void *element_ptr)
 {
     int i = 0;
+    linked_list_t *head = *head_ptr;
     linked_list_t *current;
 
-    FOREACH_NODE(*head, current) {
-        if (current == element)
+    FOREACH_NODE(head, current) {
+        if (current == element_ptr)
             break;
         i++;
     }

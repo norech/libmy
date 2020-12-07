@@ -6,7 +6,7 @@
 */
 #include <stdlib.h>
 
-void my_free_strarray(char **array)
+void my_free_array(void **array)
 {
     int i = 0;
 

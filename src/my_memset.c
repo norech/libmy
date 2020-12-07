@@ -6,13 +6,15 @@
 */
 #include <stdlib.h>
 
-void *my_memset(void *res, size_t size)
+void *my_memset(void *res, char fill, size_t size)
 {
     unsigned char *bytes = (unsigned char *)res;
 
+    size--;
     while (size) {
-        bytes[size] = '\0';
+        bytes[size] = fill;
         size--;
     }
+    bytes[size] = fill;
     return (res);
 }

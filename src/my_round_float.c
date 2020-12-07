@@ -9,7 +9,7 @@
 
 float my_round_float(float nb, int digits)
 {
-    int power = my_compute_power_rec(10, digits + 1);
+    int power = my_pow(10, digits + 1);
     int decimals = (int)((nb - (int)nb) * power);
     float nb_cut = (int)nb;
 

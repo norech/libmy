@@ -7,7 +7,7 @@
 #include <my_linked_list.h>
 #include <defmy.h>
 
-void my_reverse_node(linked_list_t **head)
+void my_reverse_node(void **head)
 {
     linked_list_t *current = *head;
     linked_list_t *prev = NULL;

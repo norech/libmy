@@ -6,19 +6,16 @@
 */
 #include <my.h>
 
-int my_put_nbr(int nb)
+int my_put_nbr(long long nb)
 {
     int len = 0;
 
-    if (nb == -2147483648) {
-        return (my_putstr("-2147483648"));
-    }
-    if (nb < 0) {
+    if (nb < 0LL) {
         len += my_putchar('-');
         nb *= -1;
     }
-    if (nb >= 10)
-        len += my_put_nbr(nb / 10);
-    len += my_put_digit(nb % 10);
+    if (nb >= 10LL)
+        len += my_put_nbr(nb / 10LL);
+    len += my_put_digit(nb % 10LL);
     return (len);
 }

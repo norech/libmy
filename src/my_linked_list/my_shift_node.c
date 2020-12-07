@@ -7,7 +7,7 @@
 #include <my_linked_list.h>
 #include <stdlib.h>
 
-void my_shift_node(linked_list_t **head)
+void my_shift_node(void **head)
 {
     linked_list_t *current = *head;
 

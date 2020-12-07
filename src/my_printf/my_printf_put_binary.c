@@ -10,15 +10,21 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+static int put_binary(unsigned long long value)
+{
+    int len = 0;
+
+    if (value > 2)
+        len += put_binary(value / 2);
+    len += my_putchar((value % 2) + '0');
+    return (len);
+}
+
 int my_printf_put_binary(va_list *ap, printf_flag_parameters_t params)
 {
-    int value = va_arg(*ap, int);
-    char output[my_intlen(value, 2)];
-    int len = 0;
+    unsigned long long value = converted_va_arg_unsigned_nbr(ap, params);
 
     if (params.precision != -1)
         return (-2);
-    my_itoa(output, value, 2);
-    len += my_putstr(output);
-    return (len);
+    return (put_binary(value));
 }

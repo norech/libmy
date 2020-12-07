@@ -93,7 +93,7 @@ int my_printf_put_nbr(va_list *ap, printf_flag_parameters_t params)
     len += put_sign(value, &params);
     if (show_zeroes)
         len += put_zeroes(value, &params);
-    len += my_put_long_long_nbr(ABS(value));
+    len += my_put_nbr(ABS(value));
     if (!show_zeroes && my_char_in(params.amplifiers, '-'))
         len += put_padding(value, &params);
     return (len);

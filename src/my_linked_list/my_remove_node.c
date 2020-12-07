@@ -8,20 +8,8 @@
 #include <defmy.h>
 #include <stdlib.h>
 
-void my_remove_node(linked_list_t **head, linked_list_t *element)
+void my_remove_node(void **head, void *element)
 {
-    linked_list_t *current = *head;
-
-    if (element == *head) {
-        *head = element->next;
-        free(element);
-    } else {
-        FOREACH_NODE(*head, current) {
-            if (current->next != element)
-                continue;
-            current->next = element->next;
-            free(element);
-            break;
-        }
-    }
+    my_detach_node(head, element);
+    free(element);
 }

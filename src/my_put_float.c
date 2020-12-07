@@ -9,7 +9,7 @@
 int my_put_float(float nb, int digits)
 {
     int len = 0;
-    int power = my_compute_power_rec(10, digits);
+    int power = my_pow(10, digits);
     int decimals = (int)((nb - (int)nb) * power);
     int zeros_count = digits - my_numlen(decimals);
     int i = 0;

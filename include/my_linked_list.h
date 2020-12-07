@@ -12,32 +12,33 @@ typedef struct linked_list {
     struct linked_list *next;
 } linked_list_t;
 
-#define LISTHEAD(x) ((linked_list_t **)&x)
-#define LISTNODE(x) ((linked_list_t *)x)
+#define HEAD(node) \
+    ((void **)&node)
 
-int my_count_nodes(linked_list_t **head);
+int my_count_nodes(void **head);
 
-linked_list_t *my_find_previous_node(linked_list_t **head,
-    linked_list_t *element);
+void *my_find_previous_node(void **head, void *element);
 
-linked_list_t *my_get_last_node(linked_list_t **head);
+void *my_get_last_node(void **head);
 
-int my_get_node_index(linked_list_t **head, linked_list_t *element);
+int my_get_node_index(void **head, void *element);
 
-void my_insert_node(linked_list_t **head, int index, linked_list_t *element);
+void my_insert_node(void **head, int index, void *element);
 
-void my_pop_node(linked_list_t **head);
+void my_pop_node(void **head);
 
-void my_push_node(linked_list_t **head, linked_list_t *element);
+void my_push_node(void **head, void *element);
 
-void my_remove_node(linked_list_t **head, linked_list_t *element);
+void my_detach_node(void **head, void *element_ptr);
 
-void my_reverse_node(linked_list_t **head);
+void my_remove_node(void **head, void *element);
 
-void my_shift_node(linked_list_t **head);
+void my_reverse_node(void **head);
 
-void my_swap_node_and_next(linked_list_t **head, linked_list_t *a);
+void my_shift_node(void **head);
 
-void my_unshift_node(linked_list_t **head, linked_list_t *element);
+void my_swap_node_and_next(void **head, void *a);
+
+void my_unshift_node(void **head, void *element);
 
 #endif //MY_LINKED_LIST_H

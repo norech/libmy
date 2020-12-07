@@ -8,11 +8,13 @@
 #include <defmy.h>
 #include <stdlib.h>
 
-void my_pop_node(linked_list_t **head)
+void my_pop_node(void **head)
 {
     linked_list_t *prev = NULL;
     linked_list_t *current = *head;
 
+    if (current == NULL)
+        return;
     while (current->next != NULL) {
         prev = current;
         current = current->next;
