@@ -25,5 +25,6 @@ void my_detach_node(void **head, void *element_ptr)
             break;
         }
     }
-    element->next = NULL;
+    if (element != NULL)
+        element->next = NULL;
 }
