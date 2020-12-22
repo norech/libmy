@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-static int is_char_alpha(char c)
+int is_char_alpha(char c)
 {
     return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }

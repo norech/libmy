@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-static int is_char_uppercase(char c)
+int is_char_uppercase(char c)
 {
     return (c >= 'A' && c <= 'Z');
 }

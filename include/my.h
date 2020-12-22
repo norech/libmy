@@ -26,6 +26,9 @@ typedef struct bit_address {
 #define BIT_ADDR(byte, offset) \
     &((bit_address_t) { byte, offset })
 
+#define BIT_ADDR_LSB(element, bitsize) \
+    BIT_ADDR(element, 8 - bitsize)
+
 void *my_calloc(int size, int count);
 int my_putchar(char c);
 int my_put_digit(int i);

@@ -45,5 +45,9 @@ char *my_str_repeat(char const *str, int count);
 bool my_str_startswith(char const *haystack, char const *needle);
 bool my_str_endswith(char const *haystack, char const *needle);
 int my_strcount(char const *haystack, char const *needle);
-
+int is_char_num(char c);
+int is_char_alpha(char c);
+int is_char_uppercase(char c);
+int is_char_printable(char c);
+int is_char_uppercase(char c);
 #endif //MY_STR_H

@@ -67,7 +67,7 @@ char **my_strsplit(char const *str, char separator)
     int words_count = count_words(str, separator);
     int *lengths = malloc(sizeof(int) * (words_count));
     fill_words_lengths(str, lengths, separator);
-    char **words = malloc(sizeof(char*) * (words_count + 1));
+    char **words = malloc(sizeof(char *) * (words_count + 1));
     fill_words(words, str, lengths, separator);
     words[words_count] = NULL;
     free(lengths);

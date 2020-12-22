@@ -11,7 +11,7 @@
 #include <my.h>
 
 static const char *default_len_mod[] = {""};
-static const char *numeric_len_mod[] = {"l","ll","h","hh", ""};
+static const char *numeric_len_mod[] = {"l", "ll", "h", "hh", ""};
 
 static const print_flag_element_t print_flags[] = {
     {'s', &my_printf_putstr, "-", default_len_mod},

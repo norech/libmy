@@ -14,8 +14,7 @@ static void copy_bytes(bit_address_t *element, bit_address_t *val,
     unsigned char *bytes = (unsigned char *)element->position;
     unsigned char *val_bytes = (unsigned char *)val->position;
 
-    bit_count--;
-    while (bit_count + 1) {
+    while (bit_count) {
         if (offset < 0) {
             bytes += 1;
             offset = 7;

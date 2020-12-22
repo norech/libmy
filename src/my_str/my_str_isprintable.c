@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-static int is_char_printable(char c)
+int is_char_printable(char c)
 {
     return (c >= 31 && c < 127);
 }

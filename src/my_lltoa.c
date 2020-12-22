@@ -19,7 +19,7 @@ int my_lltoa(char *output, long long nb, int radix)
     if (nb < 0)
         is_negative = true;
     else
-        nb =-nb;
+        nb = -nb;
     while (-nb >= radix) {
         output[i++] = base[-nb % radix];
         nb /= radix;

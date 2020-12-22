@@ -4,10 +4,14 @@
 ** File description:
 ** Some useful definitions for mylib
 */
+
 #include <stdlib.h>
 
 #ifndef DEFMY_H_
 #define DEFMY_H_
+
+int my_printf(char *s, ...);
+char *my_strjoin(char **arr, char delimiter);
 
 #define FOREACH(array, index) \
     for (int index = 0; (size_t)array[index] != 0; index++)
@@ -37,7 +41,7 @@
     my_strjoin((char *[]){ "", ## __VA_ARGS__, NULL }, joint)
 
 #define DEBUG_PRINTF(format, ...) \
-    my_printf(CONCAT("\e[32m%s:%d :\e[34m ", format, "\e[0m\n"), \
+    my_printf("\e[32m%s:%d :\e[36m " format "\e[0m\n", \
         __FILE__, __LINE__, ## __VA_ARGS__)
 
 #define BITGET(byte, position) \
@@ -52,4 +56,12 @@
                 : (byte) \
         )
 
+#define BLACK "\033[0;30m"
+#define RED "\033[0;31m"
+#define GREEN "\033[0;32m"
+#define YELLOW "\033[0;33m"
+#define BLUE "\033[0;34m"
+#define PURPLE "\033[0;35m"
+#define WITHE "\033[0;37m"
+#define DEF_COLOR WITHE
 #endif

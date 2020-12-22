@@ -9,7 +9,7 @@ CC = gcc
 
 AR = ar rc
 
-CFLAGS = -W -Wall -Werror -I./include -g3
+CFLAGS = -W -Wall -Werror -I./include -g3 -ggdb
 
 CFLAGS_TEST = ${CFLAGS} -Wno-stringop-truncation -Wno-error=format -lcriterion --coverage
 

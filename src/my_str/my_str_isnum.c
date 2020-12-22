@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-static int is_char_num(char c)
+int is_char_num(char c)
 {
     return (c >= '0' && c <= '9');
 }
