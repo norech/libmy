@@ -6,20 +6,22 @@
 */
 #include <defmy.h>
 #include <my_str.h>
+#include <my.h>
 
-static int get_joined_length(char **arr, char delimiter)
+static int get_joined_length(char **arr, char *delimiter)
 {
     int len = 0;
+    int delimiter_len = my_strlen(delimiter);
 
     FOREACH (arr, i) {
-        if (i != 0 && delimiter != '\0')
-            len++;
+        if (i != 0)
+            len += delimiter_len;
         len += my_strlen(arr[i]);
     }
     return (len);
 }
 
-char *my_strjoin(char **arr, char delimiter)
+char *my_strjoin(char **arr, char *delimiter)
 {
     char *tmp;
     int len = get_joined_length(arr, delimiter);
@@ -28,13 +30,13 @@ char *my_strjoin(char **arr, char delimiter)
 
     FOREACH (arr, j) {
         tmp = arr[j];
-        if (i != 0 && delimiter != '\0')
-            output[i++] = delimiter;
+        if (i != 0)
+            FOREACH(delimiter, j)
+                output[i++] = delimiter[j];
         ITERATE(tmp) {
-            output[i] = *tmp;
-            i++;
+            output[i++] = *tmp;
         }
     }
-    output[i++] = '\0';
+    output[i] = '\0';
     return (output);
 }

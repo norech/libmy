@@ -18,5 +18,5 @@ char *my_strconcat(int argc, ...)
         argv[i] = (char *)va_arg(ap, int *);
     va_end(ap);
     argv[i] = NULL;
-    return (my_strjoin(argv, '\0'));
+    return (my_strjoin(argv, ""));
 }
