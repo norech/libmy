@@ -12,8 +12,8 @@ void **my_array_find_all(size_t element_size, void *array,
     bool (*cmp)(size_t element_size, void *element, void *param), void *param)
 {
     int len = my_array_count(element_size, array);
-    unsigned int *bytes = (unsigned int *)array;
-    unsigned int *elements[len * element_size];
+    unsigned char *bytes = (unsigned char *)array;
+    unsigned char *elements[len * element_size];
     int j = 0;
 
     my_memset(elements, 0, len * element_size);

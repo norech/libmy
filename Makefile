@@ -123,6 +123,9 @@ SRC =	src/my_free_array.c \
 	src/my_array/my_array_find_all.c \
 	src/my_array/my_arraydup.c \
 	src/my_array/cmp/with_value.c \
+	src/my_array/print/my_array_print_nbarr.c \
+	src/my_array/print/my_array_print_strarr.c \
+	src/my_array/print/my_array_print_floatarr.c \
 	\
 	src/my_linked_list/my_count_nodes.c \
 	src/my_linked_list/my_find_previous_node.c \
