@@ -87,7 +87,7 @@ int my_printf_put_unsigned_nbr(va_list *ap, printf_flag_parameters_t params)
     len += put_sign(&params);
     if (show_zeroes)
         len += put_zeroes(value, &params);
-    len += my_put_nbr(value);
+    len += my_put_u_nbr(value);
     if (!show_zeroes && my_char_in(params.amplifiers, '-'))
         len += put_padding(value, &params);
     return (len);

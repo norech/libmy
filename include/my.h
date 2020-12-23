@@ -33,6 +33,7 @@ void *my_calloc(int size, int count);
 int my_putchar(char c);
 int my_put_digit(int i);
 int my_put_nbr(long long nb);
+int my_put_u_nbr(unsigned long long nb);
 int my_put_nbr_base(long long nb, int radix);
 int my_uitoa(char *output, unsigned int nb, int radix);
 int my_ultoa(char *output, unsigned long nb, int radix);

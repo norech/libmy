@@ -28,6 +28,7 @@ SRC =	src/my_free_array.c \
 	src/my_put_digit.c \
 	src/my_put_float.c \
 	src/my_put_nbr.c \
+	src/my_put_u_nbr.c \
 	src/my_put_nbr_base.c \
 	src/my_itoa.c \
 	src/my_uitoa.c \
