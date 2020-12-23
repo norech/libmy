@@ -11,7 +11,6 @@ int my_get_node_index(void **head_ptr, void *element_ptr)
 {
     int i = 0;
     linked_list_t *head = *head_ptr;
-    linked_list_t *current;
 
     FOREACH_NODE(head, current) {
         if (current == element_ptr)

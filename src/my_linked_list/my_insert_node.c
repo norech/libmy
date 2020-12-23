@@ -11,7 +11,6 @@ void my_insert_node(void **head_ptr, int index, void *element_ptr)
 {
     linked_list_t *head = *head_ptr;
     linked_list_t *element = element_ptr;
-    linked_list_t *current = NULL;
     int i = 0;
 
     FOREACH_NODE(head, current) {

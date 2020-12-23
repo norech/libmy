@@ -11,14 +11,14 @@
 void my_detach_node(void **head, void *element_ptr)
 {
     linked_list_t *element = element_ptr;
-    linked_list_t *current = *head;
+    linked_list_t *head_element = *head;
 
     if (*head == NULL)
         return;
     if (element == *head) {
         *head = element->next;
     } else {
-        FOREACH_NODE(*head, current) {
+        FOREACH_NODE(head_element, current) {
             if (current->next != element)
                 continue;
             current->next = element->next;

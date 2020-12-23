@@ -12,7 +12,6 @@ int my_count_nodes(void **head_ptr)
 {
     int i = 0;
     linked_list_t *head = *head_ptr;
-    linked_list_t *current = NULL;
 
     FOREACH_NODE(head, current)
         i++;
