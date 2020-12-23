@@ -6,11 +6,6 @@
 */
 #include <my.h>
 
-int is_char_uppercase(char c)
-{
-    return (c >= 'A' && c <= 'Z');
-}
-
 int my_str_islower(char const *str)
 {
     int i = 0;

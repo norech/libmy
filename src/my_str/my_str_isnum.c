@@ -6,11 +6,6 @@
 */
 #include <my.h>
 
-int is_char_num(char c)
-{
-    return (c >= '0' && c <= '9');
-}
-
 int my_str_isnum(char const *str)
 {
     int i = 0;

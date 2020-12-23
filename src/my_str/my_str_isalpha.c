@@ -6,11 +6,6 @@
 */
 #include <my.h>
 
-int is_char_alpha(char c)
-{
-    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
-}
-
 int my_str_isalpha(char const *str)
 {
     int i = 0;

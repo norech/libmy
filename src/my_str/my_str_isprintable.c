@@ -6,11 +6,6 @@
 */
 #include <my.h>
 
-int is_char_printable(char c)
-{
-    return (c >= 31 && c < 127);
-}
-
 int my_str_isprintable(char const *str)
 {
     int i = 0;

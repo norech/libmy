@@ -6,17 +6,12 @@
 */
 #include <my.h>
 
-int is_char_uppercase(char c)
-{
-    return (c >= 'A' && c <= 'Z');
-}
-
 int my_str_isupper(char const *str)
 {
     int i = 0;
 
     while (str[i] != '\0') {
-        if (is_char_uppercase(str[i]))
+        if (is_char_lowercase(str[i]))
             return (0);
         i++;
     }
