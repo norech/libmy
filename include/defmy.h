@@ -26,7 +26,7 @@ char *my_strjoin(char **arr, char *delimiter);
 
 #define FOREACH_NODE(head, current) \
     for (__typeof__(head) current = head; current != NULL; \
-            current = (current != NULL ? current->next : NULL))
+            current = current->next)
 
 #define ITERATE(array) \
     for (; (size_t)(*array) != 0; array++)
