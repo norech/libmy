@@ -31,9 +31,6 @@ char *my_strjoin(char **arr, char *delimiter);
 #define ITERATE(array) \
     for (; (size_t)(*array) != 0; array++)
 
-#define UNUSED(x) \
-    x = x
-
 #define GET_12TH_ARG(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, ...) a12
 
 #define ARGS_COUNT(...) \
@@ -89,6 +86,7 @@ char *my_strjoin(char **arr, char *delimiter);
         default: my_printf("unsupported") \
     )
 
+#define UNUSED __attribute__((unused))
 #define BLACK "\033[0;30m"
 #define RED "\033[0;31m"
 #define GREEN "\033[0;32m"
