@@ -281,7 +281,7 @@ tests_run: clean_tests
 	./$(TARGET_TEST)
 
 clean_tests:
-	rm -rf $(TARGET_TEST)
+	rm -rf *.gc* $(TARGET_TEST)
 
 coverage: test
 	gcovr
