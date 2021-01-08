@@ -38,8 +38,7 @@ int my_getnbr(char const *str)
             multiplier *= -1;
         }
         if (multiplier == -1 && number == 214748364 && c == '8') {
-            number = 2147483648;
-            break;
+            return -2147483648;
         }
         if (process_digit(&has_started_number, &number, c))
             break;

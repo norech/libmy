@@ -5,9 +5,11 @@
 ## My library
 ##
 
-CC = gcc
+CC ?= gcc
 
-AR = ar rc
+AR_RC ?= ar rc
+
+LN_RSF ?= ln -rsf
 
 CFLAGS = -W -Wall -Werror -I./include -g3 -ggdb
 
@@ -267,16 +269,16 @@ endif
 all: build_all
 
 build_all: $(OBJ)
-	$(AR) $(TARGET) $(OBJ)
+	$(AR_RC) $(TARGET) $(OBJ)
 	cp $(TARGET) ../
 	mkdir -p ../../include
-	ln -rsf ./include/my.h ../../include
-	ln -rsf ./include/my_linked_list.h ../../include
-	ln -rsf ./include/my_array.h ../../include
-	ln -rsf ./include/my_math.h ../../include
-	ln -rsf ./include/my_str.h ../../include
-	ln -rsf ./include/my_fd.h ../../include
-	ln -rsf ./include/defmy.h ../../include
+	$(LN_RSF) ./include/my.h ../../include
+	$(LN_RSF) ./include/my_linked_list.h ../../include
+	$(LN_RSF) ./include/my_array.h ../../include
+	$(LN_RSF) ./include/my_math.h ../../include
+	$(LN_RSF) ./include/my_str.h ../../include
+	$(LN_RSF) ./include/my_fd.h ../../include
+	$(LN_RSF) ./include/defmy.h ../../include
 
 build_linked:
 	$(CC) $(CFLAGS) $(SRC) $(LFLAGS)
