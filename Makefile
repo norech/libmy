@@ -258,6 +258,11 @@ ifneq ("$(LIB_STR)","")
 	OBJ += $(OBJ_STR)
 endif
 
+ifeq ("$(SRC)","")
+	SRC = $(SRC_ALL)
+	OBJ = $(OBJ_ALL)
+endif
+
 
 all: build_all
 
