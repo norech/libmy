@@ -11,7 +11,7 @@ AR_RC ?= ar rc
 
 LN_RSF ?= ln -rsf
 
-CFLAGS = -W -Wall -Werror -I./include -g3 -ggdb
+CFLAGS = -W -Wall -Werror -I./include
 
 CFLAGS_TEST = $(CFLAGS) -Wno-stringop-truncation -Wno-error=format -lcriterion --coverage
 
@@ -222,66 +222,81 @@ TARGET = libmy.a
 
 TARGET_TEST = unit_tests
 
-
-ifneq ("$(LIB_COMMON)","")
+ifeq ("$(LIB_COMMON)","1")
 	SRC += $(SRC_COMMON)
 	OBJ += $(OBJ_COMMON)
 	LIB_MATH = 1
 endif
-ifneq ("$(LIB_DEBUG)","")
+ifeq ("$(LIB_DEBUG)","1")
 	SRC += $(SRC_DEBUG)
 	OBJ += $(OBJ_DEBUG)
 	LIB_ARRAY = 1
 	LIB_FORMAT = 1
 endif
-ifneq ("$(LIB_IO)","")
+ifeq ("$(LIB_IO)","1")
 	SRC += $(SRC_IO)
 	OBJ += $(OBJ_IO)
 endif
-ifneq ("$(LIB_FORMAT)","")
+ifeq ("$(LIB_FORMAT)","1")
 	SRC += $(SRC_FORMAT)
 	OBJ += $(OBJ_FORMAT)
 	LIB_STR = 1
+	LIB_CONVERT = 1
 endif
-ifneq ("$(LIB_MATH)","")
+ifeq ("$(LIB_MATH)","1")
 	SRC += $(SRC_MATH)
 	OBJ += $(OBJ_MATH)
 endif
-ifneq ("$(LIB_ARRAY)","")
+ifeq ("$(LIB_ARRAY)","1")
 	SRC += $(SRC_ARRAY)
 	OBJ += $(OBJ_ARRAY)
 endif
-ifneq ("$(LIB_LINKED_LIST)","")
+ifeq ("$(LIB_LINKED_LIST)","1")
 	SRC += $(SRC_LINKED_LIST)
 	OBJ += $(OBJ_LINKED_LIST)
 endif
-ifneq ("$(LIB_STR)","")
+ifeq ("$(LIB_STR)","1")
 	SRC += $(SRC_STR)
 	OBJ += $(OBJ_STR)
+endif
+ifeq ("$(LIB_CONVERT)","1")
+	SRC += $(SRC_CONVERT)
+	OBJ += $(OBJ_CONVERT)
 endif
 
 ifeq ("$(SRC)","")
 	SRC = $(SRC_ALL)
 	OBJ = $(OBJ_ALL)
+	LIB_ALL = 1
 endif
 
-
 all: build_all
+
+copy_headers:
+	@mkdir -p ../../include
+	@$(LN_RSF) ./include/defmy.h ../../include
+	@$(LN_RSF) ./include/my.h ../../include
+	@if [ "$(LIB_LINKED_LIST)" ] || [ "$(LIB_ALL)" ]; then \
+		$(LN_RSF) ./include/my_linked_list.h ../../include; \
+	fi
+	@if [ "$(LIB_ARRAY)" ] || [ "$(LIB_ALL)" ]; then \
+		$(LN_RSF) ./include/my_array.h ../../include; \
+	fi
+	@if [ "$(LIB_MATH)" ] || [ "$(LIB_ALL)" ]; then \
+		$(LN_RSF) ./include/my_math.h ../../include; \
+	fi
+	@if [ "$(LIB_STR)" ] || [ "$(LIB_ALL)" ]; then \
+		$(LN_RSF) ./include/my_str.h ../../include; \
+	fi
+	@if [ "$(LIB_IO)" ] || [ "$(LIB_ALL)" ]; then \
+		$(LN_RSF) ./include/my_fd.h ../../include; \
+	fi
 
 build_all: $(OBJ)
 	$(AR_RC) $(TARGET) $(OBJ)
 	cp $(TARGET) ../
-	mkdir -p ../../include
-	$(LN_RSF) ./include/my.h ../../include
-	$(LN_RSF) ./include/my_linked_list.h ../../include
-	$(LN_RSF) ./include/my_array.h ../../include
-	$(LN_RSF) ./include/my_math.h ../../include
-	$(LN_RSF) ./include/my_str.h ../../include
-	$(LN_RSF) ./include/my_fd.h ../../include
-	$(LN_RSF) ./include/defmy.h ../../include
-
-build_linked:
-	$(CC) $(CFLAGS) $(SRC) $(LFLAGS)
+	@echo "Copying headers..."
+	$(MAKE) copy_headers
 
 tests_run: clean_tests
 	$(CC) $(CFLAGS) $(CFLAGS_TEST) -o $(TARGET_TEST) $(SRC_ALL) $(TEST_FILES) $(LFLAGS)
@@ -290,7 +305,7 @@ tests_run: clean_tests
 clean_tests:
 	rm -rf *.gc* $(TARGET_TEST)
 
-coverage: test
+coverage: tests_run
 	gcovr
 
 clean:
@@ -300,3 +315,5 @@ fclean: clean
 	rm -f $(TARGET)
 
 re: fclean all
+
+.PHONY: all re tests_run coverage clean fclean
