@@ -170,6 +170,7 @@ SRC_ALL = \
 	$(SRC_IO) \
 	$(SRC_LINKED_LIST) \
 	$(SRC_FORMAT) \
+	$(SRC_ARRAY) \
 	$(SRC_STR)
 
 OBJ_ALL = $(SRC:.c=.o)

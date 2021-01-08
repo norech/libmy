@@ -16,7 +16,7 @@ int my_put_nbr_base(long long nb, int radix)
         len += my_putchar('-');
         nb *= -1;
     }
-    if (nb >= 10)
+    if (nb >= radix)
         len += my_put_nbr_base(nb / radix, radix);
     len += my_put_digit(nb % radix);
     return (len);
