@@ -11,51 +11,71 @@ AR = ar rc
 
 CFLAGS = -W -Wall -Werror -I./include -g3 -ggdb
 
-CFLAGS_TEST = ${CFLAGS} -Wno-stringop-truncation -Wno-error=format -lcriterion --coverage
+CFLAGS_TEST = $(CFLAGS) -Wno-stringop-truncation -Wno-error=format -lcriterion --coverage
 
 LFLAGS = \
 
-LFLAGS_TEST = ${LFLAGS} -lcriterion
+LFLAGS_TEST = $(LFLAGS) -lcriterion
 
 TESTDIR = ../../tests/lib/my
 
-SRC =	src/my_free_array.c \
-	src/my_get_digit_char.c \
-	src/my_getnbr.c \
-	src/my_numlen.c \
-	src/my_printf.c \
-	src/my_putchar.c \
-	src/my_put_digit.c \
-	src/my_put_float.c \
-	src/my_put_nbr.c \
-	src/my_put_u_nbr.c \
-	src/my_put_nbr_base.c \
-	src/my_itoa.c \
-	src/my_uitoa.c \
-	src/my_intlen.c \
-	src/my_ultoa.c \
-	src/my_ltoa.c \
-	src/my_longlen.c \
-	src/my_lltoa.c \
-	src/my_longlonglen.c \
-	src/my_float_to_exponent.c \
-	src/my_size_t_to_string.c \
-	src/my_size_t_len.c \
-	src/my_putstr.c \
-	src/my_showmem.c \
-	src/my_showstr.c \
-	src/my_show_word_array.c \
-	src/my_sort_int_array.c \
-	src/my_swap.c \
-	src/my_swap_ptr.c \
-	src/my_round_float.c \
-	src/my_parse_args.c \
-	src/my_calloc.c \
-	src/my_memcpy.c \
-	src/my_memset.c \
-	src/my_bitmemset.c \
-	src/my_bitmemcpy.c \
-	\
+SRC_COMMON =	\
+	src/my_common/my_free_array.c \
+	src/my_common/my_get_digit_char.c \
+	src/my_common/my_getnbr.c \
+	src/my_common/my_numlen.c \
+	src/my_common/my_putchar.c \
+	src/my_common/my_put_digit.c \
+	src/my_common/my_put_float.c \
+	src/my_common/my_put_nbr.c \
+	src/my_common/my_put_u_nbr.c \
+	src/my_common/my_put_nbr_base.c \
+	src/my_common/my_intlen.c \
+	src/my_common/my_longlen.c \
+	src/my_common/my_longlonglen.c \
+	src/my_common/my_float_to_exponent.c \
+	src/my_common/my_size_t_len.c \
+	src/my_common/my_putstr.c \
+	src/my_common/my_showmem.c \
+	src/my_common/my_showstr.c \
+	src/my_common/my_show_word_array.c \
+	src/my_common/my_sort_int_array.c \
+	src/my_common/my_swap.c \
+	src/my_common/my_swap_ptr.c \
+	src/my_common/my_round_float.c \
+	src/my_common/my_calloc.c \
+	src/my_common/my_memcpy.c \
+	src/my_common/my_memset.c \
+	src/my_common/my_bitmemset.c \
+	src/my_common/my_bitmemcpy.c
+
+SRC_CONVERT = \
+	src/my_convert/my_itoa.c \
+	src/my_convert/my_uitoa.c \
+	src/my_convert/my_ultoa.c \
+	src/my_convert/my_ltoa.c \
+	src/my_convert/my_lltoa.c \
+	src/my_convert/my_size_t_to_string.c \
+	src/my_convert/my_parse_args.c
+
+SRC_DEBUG = \
+	src/my_debug/array/my_array_print_nbarr.c \
+	src/my_debug/array/my_array_print_strarr.c \
+	src/my_debug/array/my_array_print_floatarr.c
+
+SRC_MATH = \
+	src/my_math/my_pow.c \
+	src/my_math/my_sqrt.c \
+	src/my_math/my_find_prime_sup.c \
+	src/my_math/my_is_prime.c \
+
+SRC_IO = \
+	src/my_fd/my_fd_put_digit.c \
+	src/my_fd/my_fd_putchar.c \
+	src/my_fd/my_fd_putstr.c \
+
+SRC_FORMAT = \
+	src/my_printf/my_printf.c \
 	src/my_printf/my_printf_convert.c \
 	src/my_printf/my_printf_parse_flags.c \
 	src/my_printf/my_printf_parse_tokens.c \
@@ -72,17 +92,32 @@ SRC =	src/my_free_array.c \
 	src/my_printf/my_printf_put_octal.c \
 	src/my_printf/my_printf_put_hexa_lower.c \
 	src/my_printf/my_printf_put_hexa_upper.c \
-	src/my_printf/my_printf_putptr.c \
-	\
-	src/my_fd/my_fd_put_digit.c \
-	src/my_fd/my_fd_putchar.c \
-	src/my_fd/my_fd_putstr.c \
-	\
-	src/my_math/my_pow.c \
-	src/my_math/my_sqrt.c \
-	src/my_math/my_find_prime_sup.c \
-	src/my_math/my_is_prime.c \
-	\
+	src/my_printf/my_printf_putptr.c
+
+SRC_ARRAY = \
+	src/my_array/my_array_count.c \
+	src/my_array/my_array_merge.c \
+	src/my_array/my_array_find_one.c \
+	src/my_array/my_array_find_all.c \
+	src/my_array/my_arraydup.c \
+	src/my_array/cmp/with_value.c
+
+SRC_LINKED_LIST = \
+	src/my_linked_list/my_count_nodes.c \
+	src/my_linked_list/my_find_previous_node.c \
+	src/my_linked_list/my_get_last_node.c \
+	src/my_linked_list/my_get_node_index.c \
+	src/my_linked_list/my_insert_node.c \
+	src/my_linked_list/my_pop_node.c \
+	src/my_linked_list/my_push_node.c \
+	src/my_linked_list/my_detach_node.c \
+	src/my_linked_list/my_remove_node.c \
+	src/my_linked_list/my_reverse_node.c \
+	src/my_linked_list/my_shift_node.c \
+	src/my_linked_list/my_swap_node_and_next.c \
+	src/my_linked_list/my_unshift_node.c
+
+SRC_STR = \
 	src/my_str/my_bzero.c \
 	src/my_str/my_char_in.c \
 	src/my_str/my_revstr.c \
@@ -115,80 +150,119 @@ SRC =	src/my_free_array.c \
 	src/my_str/my_strjoin.c \
 	src/my_str/my_strconcat.c \
 	src/my_str/my_strcount.c \
-	src/my_str/my_strtake.c \
-	\
-	src/my_array/my_array_count.c \
-	src/my_array/my_array_merge.c \
-	src/my_array/my_array_find_one.c \
-	src/my_array/my_array_find_all.c \
-	src/my_array/my_arraydup.c \
-	src/my_array/cmp/with_value.c \
-	src/my_array/print/my_array_print_nbarr.c \
-	src/my_array/print/my_array_print_strarr.c \
-	src/my_array/print/my_array_print_floatarr.c \
-	\
-	src/my_linked_list/my_count_nodes.c \
-	src/my_linked_list/my_find_previous_node.c \
-	src/my_linked_list/my_get_last_node.c \
-	src/my_linked_list/my_get_node_index.c \
-	src/my_linked_list/my_insert_node.c \
-	src/my_linked_list/my_pop_node.c \
-	src/my_linked_list/my_push_node.c \
-	src/my_linked_list/my_detach_node.c \
-	src/my_linked_list/my_remove_node.c \
-	src/my_linked_list/my_reverse_node.c \
-	src/my_linked_list/my_shift_node.c \
-	src/my_linked_list/my_swap_node_and_next.c \
-	src/my_linked_list/my_unshift_node.c
+	src/my_str/my_strtake.c
 
-TEST_FILES =	${TESTDIR}/test_my_printf.c \
-		${TESTDIR}/test_my_strconcat.c \
-		${TESTDIR}/test_my_putchar.c \
-		${TESTDIR}/test_my_revstr.c \
-		${TESTDIR}/test_my_strcapitalize.c \
-		${TESTDIR}/test_my_strcat.c \
-		${TESTDIR}/test_my_strcmp.c \
-		${TESTDIR}/test_my_strcpy.c \
-		${TESTDIR}/test_my_strdup.c \
-		${TESTDIR}/test_my_strsplit.c \
-		${TESTDIR}/test_my_strjoin.c \
-		${TESTDIR}/test_my_str_isalpha.c \
-		${TESTDIR}/test_my_str_islower.c \
-		${TESTDIR}/test_my_str_isnum.c \
-		${TESTDIR}/test_my_str_isprintable.c \
-		${TESTDIR}/test_my_str_isupper.c \
-		${TESTDIR}/test_my_strlowcase.c \
-		${TESTDIR}/test_my_strncat.c \
-		${TESTDIR}/test_my_strncmp.c \
-		${TESTDIR}/test_my_strncpy.c \
-		${TESTDIR}/test_my_strstr.c \
-		${TESTDIR}/test_my_strupcase.c\
-		${TESTDIR}/test_my_strcount.c\
-		${TESTDIR}/test_my_str_startswith.c\
-		${TESTDIR}/test_my_str_endswith.c\
-		${TESTDIR}/test_my_array_count.c \
-		${TESTDIR}/test_my_array_merge.c \
-		${TESTDIR}/test_my_array_find.c \
-		${TESTDIR}/test_BITSET.c\
-		${TESTDIR}/test_BITGET.c\
-		${TESTDIR}/test_my_bitmemset.c \
-		${TESTDIR}/test_my_bitmemcpy.c \
-		${TESTDIR}/test_my_count_nodes.c \
-		${TESTDIR}/test_my_find_previous_node.c \
-		${TESTDIR}/test_my_get_last_node.c \
-		${TESTDIR}/test_my_remove_node.c
+OBJ_DEBUG = $(SRC_DEBUG:.c=.o)
+OBJ_CONVERT = $(SRC_CONVERT:.c=.o)
+OBJ_COMMON = $(SRC_COMMON:.c=.o)
+OBJ_MATH = $(SRC_MATH:.c=.o)
+OBJ_IO = $(SRC_IO:.c=.o)
+OBJ_FORMAT = $(SRC_FORMAT:.c=.o)
+OBJ_ARRAY = $(SRC_ARRAY:.c=.o)
+OBJ_LINKED_LIST = $(SRC_LINKED_LIST:.c=.o)
+OBJ_STR = $(SRC_STR:.c=.o)
 
-OBJ = ${SRC:.c=.o}
+SRC_ALL = \
+	$(SRC_COMMON) \
+	$(SRC_CONVERT) \
+	$(SRC_DEBUG) \
+	$(SRC_MATH) \
+	$(SRC_IO) \
+	$(SRC_LINKED_LIST) \
+	$(SRC_FORMAT) \
+	$(SRC_STR)
+
+OBJ_ALL = $(SRC:.c=.o)
+
+SRC = 
+OBJ = 
+
+TEST_FILES = \
+	$(TESTDIR)/test_my_printf.c \
+	$(TESTDIR)/test_my_strconcat.c \
+	$(TESTDIR)/test_my_putchar.c \
+	$(TESTDIR)/test_my_revstr.c \
+	$(TESTDIR)/test_my_strcapitalize.c \
+	$(TESTDIR)/test_my_strcat.c \
+	$(TESTDIR)/test_my_strcmp.c \
+	$(TESTDIR)/test_my_strcpy.c \
+	$(TESTDIR)/test_my_strdup.c \
+	$(TESTDIR)/test_my_strsplit.c \
+	$(TESTDIR)/test_my_strjoin.c \
+	$(TESTDIR)/test_my_str_isalpha.c \
+	$(TESTDIR)/test_my_str_islower.c \
+	$(TESTDIR)/test_my_str_isnum.c \
+	$(TESTDIR)/test_my_str_isprintable.c \
+	$(TESTDIR)/test_my_str_isupper.c \
+	$(TESTDIR)/test_my_strlowcase.c \
+	$(TESTDIR)/test_my_strncat.c \
+	$(TESTDIR)/test_my_strncmp.c \
+	$(TESTDIR)/test_my_strncpy.c \
+	$(TESTDIR)/test_my_strstr.c \
+	$(TESTDIR)/test_my_strupcase.c\
+	$(TESTDIR)/test_my_strcount.c\
+	$(TESTDIR)/test_my_str_startswith.c\
+	$(TESTDIR)/test_my_str_endswith.c\
+	$(TESTDIR)/test_my_array_count.c \
+	$(TESTDIR)/test_my_array_merge.c \
+	$(TESTDIR)/test_my_array_find.c \
+	$(TESTDIR)/test_BITSET.c\
+	$(TESTDIR)/test_BITGET.c\
+	$(TESTDIR)/test_my_bitmemset.c \
+	$(TESTDIR)/test_my_bitmemcpy.c \
+	$(TESTDIR)/test_my_count_nodes.c \
+	$(TESTDIR)/test_my_find_previous_node.c \
+	$(TESTDIR)/test_my_get_last_node.c \
+	$(TESTDIR)/test_my_remove_node.c
 
 TARGET = libmy.a
 
 TARGET_TEST = unit_tests
 
+
+ifneq ("$(LIB_COMMON)","")
+	SRC += $(SRC_COMMON)
+	OBJ += $(OBJ_COMMON)
+	LIB_MATH = 1
+endif
+ifneq ("$(LIB_DEBUG)","")
+	SRC += $(SRC_DEBUG)
+	OBJ += $(OBJ_DEBUG)
+	LIB_ARRAY = 1
+	LIB_FORMAT = 1
+endif
+ifneq ("$(LIB_IO)","")
+	SRC += $(SRC_IO)
+	OBJ += $(OBJ_IO)
+endif
+ifneq ("$(LIB_FORMAT)","")
+	SRC += $(SRC_FORMAT)
+	OBJ += $(OBJ_FORMAT)
+	LIB_STR = 1
+endif
+ifneq ("$(LIB_MATH)","")
+	SRC += $(SRC_MATH)
+	OBJ += $(OBJ_MATH)
+endif
+ifneq ("$(LIB_ARRAY)","")
+	SRC += $(SRC_ARRAY)
+	OBJ += $(OBJ_ARRAY)
+endif
+ifneq ("$(LIB_LINKED_LIST)","")
+	SRC += $(SRC_LINKED_LIST)
+	OBJ += $(OBJ_LINKED_LIST)
+endif
+ifneq ("$(LIB_STR)","")
+	SRC += $(SRC_STR)
+	OBJ += $(OBJ_STR)
+endif
+
+
 all: build_all
 
-build_all: ${OBJ}
-	${AR} ${TARGET} ${OBJ}
-	cp ${TARGET} ../
+build_all: $(OBJ)
+	$(AR) $(TARGET) $(OBJ)
+	cp $(TARGET) ../
 	mkdir -p ../../include
 	ln -rsf ./include/my.h ../../include
 	ln -rsf ./include/my_linked_list.h ../../include
@@ -198,20 +272,23 @@ build_all: ${OBJ}
 	ln -rsf ./include/my_fd.h ../../include
 	ln -rsf ./include/defmy.h ../../include
 
+build_linked:
+	$(CC) $(CFLAGS) $(SRC) $(LFLAGS)
+
 tests_run: clean_tests
-	${CC} ${CFLAGS} ${CFLAGS_TEST} -o ${TARGET_TEST} ${SRC} ${TEST_FILES} ${LFLAGS}
-	./${TARGET_TEST}
+	$(CC) $(CFLAGS) $(CFLAGS_TEST) -o $(TARGET_TEST) $(SRC_ALL) $(TEST_FILES) $(LFLAGS)
+	./$(TARGET_TEST)
 
 clean_tests:
-	rm -rf ${TARGET_TEST}
+	rm -rf $(TARGET_TEST)
 
 coverage: test
 	gcovr
 
 clean:
-	rm -f ${OBJ} *.gc* unit_test
+	rm -f $(OBJ) *.gc* unit_test
 
 fclean: clean
-	rm -f ${TARGET}
+	rm -f $(TARGET)
 
 re: fclean all

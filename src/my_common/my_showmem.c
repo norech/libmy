@@ -6,9 +6,7 @@
 */
 #include <defmy.h>
 
-int my_showmem(char const *str, int size)
+int my_showmem(char const *str UNUSED, int size UNUSED)
 {
-    UNUSED(str);
-    UNUSED(size);
     return (0);
 }

@@ -46,7 +46,7 @@ parsed_args_t my_parse_args(int argc, char **argv)
     int i = 0;
     int j = 0;
 
-    my_bzero(flags, 256);
+    my_memset(flags, 0, 256);
     while (i < argc) {
         arg = argv[i];
         if (*arg == '-') {

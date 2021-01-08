@@ -11,6 +11,6 @@ void *my_calloc(int size, int count)
 {
     void *allocated = malloc(size * count);
 
-    my_bzero((char *)allocated, size * count);
+    my_memset(allocated, 0, size * count);
     return (allocated);
 }

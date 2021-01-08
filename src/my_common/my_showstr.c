@@ -6,8 +6,7 @@
 */
 #include <defmy.h>
 
-int my_showstr(char const *str)
+int my_showstr(char const *str UNUSED)
 {
-    UNUSED(str);
     return (0);
 }
