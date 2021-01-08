@@ -2,4 +2,5 @@ vgcore.*
 unit_tests
 *.o
 *.gc*
+libmy.a
 .git
