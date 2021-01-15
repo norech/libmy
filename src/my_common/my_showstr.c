@@ -4,7 +4,7 @@
 ** File description:
 ** Show string in fully readable format
 */
-#include <defmy.h>
+#include <my.h>
 
 int my_showstr(char const *str UNUSED)
 {

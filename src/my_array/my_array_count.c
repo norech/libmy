@@ -4,7 +4,6 @@
 ** File description:
 ** Source code
 */
-#include <defmy.h>
 #include <my.h>
 
 int my_array_count(size_t element_size, void *array)

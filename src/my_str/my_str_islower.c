@@ -6,15 +6,14 @@
 */
 #include <my.h>
 
-int my_str_islower(char const *str)
+bool my_str_islower(char const *str)
 {
     int i = 0;
 
     while (str[i] != '\0') {
         if (is_char_uppercase(str[i]))
-            return (0);
+            return (false);
         i++;
     }
-
-    return (1);
+    return (true);
 }

@@ -6,14 +6,14 @@
 */
 #include <my.h>
 
-int my_char_in(char const *haystack, char needle)
+bool my_char_in(char const *haystack, char needle)
 {
     int i = 0;
     while (haystack[i] != '\0') {
         if (haystack[i] == needle)
-            return (1);
+            return (true);
         i++;
     }
 
-    return (0);
+    return (false);
 }

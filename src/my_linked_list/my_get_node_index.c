@@ -4,8 +4,8 @@
 ** File description:
 ** Source code
 */
-#include <my_linked_list.h>
-#include <defmy.h>
+#include <my/linked_list.h>
+#include <my/def.h>
 
 int my_get_node_index(void **head_ptr, void *element_ptr)
 {

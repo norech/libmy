@@ -4,7 +4,7 @@
 ** File description:
 ** Show string in memory in fully readable format
 */
-#include <defmy.h>
+#include <my.h>
 
 int my_showmem(char const *str UNUSED, int size UNUSED)
 {

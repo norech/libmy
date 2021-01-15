@@ -47,7 +47,7 @@ parsed_args_t my_parse_args(int argc, char **argv)
     int j = 0;
 
     my_memset(flags, 0, 256);
-    while (i < argc) {
+    while (i <= argc) {
         arg = argv[i];
         if (*arg == '-') {
             append_flags(flags, arg + 1);
@@ -57,6 +57,6 @@ parsed_args_t my_parse_args(int argc, char **argv)
         }
         i++;
     }
-    argv[i] = NULL;
+    args[j] = NULL;
     return ((parsed_args_t) { args_count, args, flags });
 }

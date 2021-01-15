@@ -6,15 +6,15 @@
 */
 #include <my.h>
 
-int my_str_isprintable(char const *str)
+bool my_str_isprintable(char const *str)
 {
     int i = 0;
 
     while (str[i] != '\0') {
         if (!is_char_printable(str[i]))
-            return (0);
+            return (false);
         i++;
     }
 
-    return (1);
+    return (true);
 }

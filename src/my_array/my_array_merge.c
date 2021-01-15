@@ -5,7 +5,7 @@
 ** Source code
 */
 #include <my.h>
-#include <my_array.h>
+#include <my/array.h>
 
 void *my_array_merge(size_t element_size, void **elements)
 {

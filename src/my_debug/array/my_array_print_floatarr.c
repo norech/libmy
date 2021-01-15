@@ -4,7 +4,7 @@
 ** File description:
 ** Source code
 */
-#include <defmy.h>
+#include <my/def.h>
 #include <my.h>
 
 void my_array_print_floatarr(float *arr, ssize_t size)

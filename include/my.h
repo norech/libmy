@@ -5,9 +5,10 @@
 ** Header for libmy
 */
 #include <unistd.h>
-#include <defmy.h>
-#include <my_str.h>
-#include <my_math.h>
+#include <my/def.h>
+#include <my/str.h>
+#include <my/math.h>
+#include <my/result.h>
 
 #ifndef MY_H_
 #define MY_H_
@@ -29,6 +30,7 @@ typedef struct bit_address {
 #define BIT_ADDR_LSB(element, bitsize) \
     BIT_ADDR(element, 8 - bitsize)
 
+RES(int) my_getnbr(char const *str);
 void *my_calloc(int size, int count);
 int my_putchar(char c);
 int my_put_digit(int i);
@@ -47,7 +49,6 @@ int my_longlonglen(long long number, int base);
 int my_size_t_len(size_t number, int base);
 void my_swap(int *a, int *b);
 int my_putstr(char const *str);
-int my_getnbr(char const *str);
 void my_sort_int_array(int *tab, int size);
 int my_showstr(char const *str);
 int my_showmem(char const *str, int size);
@@ -65,5 +66,7 @@ void *my_memset(void *dest, char fill, size_t size);
 void *my_memcpy(void *dest, void *val, size_t size);
 void my_bitmemset(void *element, int startoffset, bool value, size_t bit_count);
 void my_bitmemcpy(bit_address_t *target, bit_address_t *src, size_t bit_count);
+int my_strarray_size(char **args);
+void my_strarray_free(char **array);
 
 #endif

@@ -4,9 +4,9 @@
 ** File description:
 ** Source code
 */
-#include <defmy.h>
+#include <my/def.h>
 #include <my.h>
-#include <my_array.h>
+#include <my/array.h>
 #include <stdlib.h>
 
 

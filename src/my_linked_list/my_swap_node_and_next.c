@@ -4,8 +4,8 @@
 ** File description:
 ** Source code
 */
-#include <my_linked_list.h>
-#include <defmy.h>
+#include <my/linked_list.h>
+#include <my/def.h>
 
 void my_swap_node_and_next(void **head, void *a_ptr)
 {

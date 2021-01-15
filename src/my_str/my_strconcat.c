@@ -7,10 +7,10 @@
 #include <my.h>
 #include <stdarg.h>
 
-char *my_strconcat(int argc, ...)
+mut_str_t my_strconcat(int argc, ...)
 {
     va_list ap;
-    char *argv[argc + 1];
+    str_t argv[argc + 1];
     int i = 0;
 
     va_start(ap, argc);

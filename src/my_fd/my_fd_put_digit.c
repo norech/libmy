@@ -4,7 +4,7 @@
 ** File description:
 ** Print a digit in any base
 */
-#include <my_fd.h>
+#include <my/io.h>
 #include <my.h>
 
 int my_fd_put_digit(int fd, int i)

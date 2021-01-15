@@ -5,13 +5,13 @@
 ## My library
 ##
 
-CC ?= gcc
+CC = gcc
 
 AR_RC ?= ar rc
 
 LN_RSF ?= ln -rsf
 
-CFLAGS = -W -Wall -Werror -I./include
+CFLAGS = -W -Wall -Werror -I./include -g
 
 CFLAGS_TEST = $(CFLAGS) -Wno-stringop-truncation -Wno-error=format -lcriterion --coverage
 
@@ -49,7 +49,9 @@ SRC_COMMON =	\
 	src/my_common/my_memcpy.c \
 	src/my_common/my_memset.c \
 	src/my_common/my_bitmemset.c \
-	src/my_common/my_bitmemcpy.c
+	src/my_common/my_bitmemcpy.c \
+	src/my_common/my_strarray_size.c \
+	src/my_common/my_strarray_free.c
 
 SRC_CONVERT = \
 	src/my_convert/my_itoa.c \
@@ -154,6 +156,22 @@ SRC_STR = \
 	src/my_str/my_strcount.c \
 	src/my_str/my_strtake.c
 
+SRC_STRING = \
+	src/my_string/my_string_append.c \
+	src/my_string/my_string_assign.c \
+	src/my_string/my_string_compare.c \
+	src/my_string/my_string_create.c \
+	src/my_string/my_string_create_raw.c \
+	src/my_string/my_string_create_with_capacity.c \
+	src/my_string/my_string_destroy.c \
+	src/my_string/my_string_from_capacity.c \
+	src/my_string/my_string_from.c \
+	src/my_string/my_string_indexof.c \
+	src/my_string/my_string_pop.c \
+	src/my_string/my_string_push_str.c \
+	src/my_string/my_string_push.c \
+	src/my_string/my_string_reserve.c
+
 OBJ_DEBUG = $(SRC_DEBUG:.c=.o)
 OBJ_CONVERT = $(SRC_CONVERT:.c=.o)
 OBJ_COMMON = $(SRC_COMMON:.c=.o)
@@ -163,6 +181,7 @@ OBJ_FORMAT = $(SRC_FORMAT:.c=.o)
 OBJ_ARRAY = $(SRC_ARRAY:.c=.o)
 OBJ_LINKED_LIST = $(SRC_LINKED_LIST:.c=.o)
 OBJ_STR = $(SRC_STR:.c=.o)
+OBJ_STRING = $(SRC_STRING:.c=.o)
 
 SRC_ALL = \
 	$(SRC_COMMON) \
@@ -173,7 +192,8 @@ SRC_ALL = \
 	$(SRC_LINKED_LIST) \
 	$(SRC_FORMAT) \
 	$(SRC_ARRAY) \
-	$(SRC_STR)
+	$(SRC_STR) \
+	$(SRC_STRING)
 
 OBJ_ALL = $(SRC:.c=.o)
 
@@ -259,6 +279,11 @@ ifeq ("$(LIB_STR)","1")
 	SRC += $(SRC_STR)
 	OBJ += $(OBJ_STR)
 endif
+ifeq ("$(LIB_STRING)","1")
+	SRC += $(SRC_STRING)
+	OBJ += $(OBJ_STRING)
+	LIB_STR = 1
+endif
 ifeq ("$(LIB_CONVERT)","1")
 	SRC += $(SRC_CONVERT)
 	OBJ += $(OBJ_CONVERT)
@@ -274,23 +299,8 @@ all: build_all
 
 copy_headers:
 	@mkdir -p ../../include
-	@$(LN_RSF) ./include/defmy.h ../../include
 	@$(LN_RSF) ./include/my.h ../../include
-	@if [ "$(LIB_LINKED_LIST)" ] || [ "$(LIB_ALL)" ]; then \
-		$(LN_RSF) ./include/my_linked_list.h ../../include; \
-	fi
-	@if [ "$(LIB_ARRAY)" ] || [ "$(LIB_ALL)" ]; then \
-		$(LN_RSF) ./include/my_array.h ../../include; \
-	fi
-	@if [ "$(LIB_MATH)" ] || [ "$(LIB_ALL)" ]; then \
-		$(LN_RSF) ./include/my_math.h ../../include; \
-	fi
-	@if [ "$(LIB_STR)" ] || [ "$(LIB_ALL)" ]; then \
-		$(LN_RSF) ./include/my_str.h ../../include; \
-	fi
-	@if [ "$(LIB_IO)" ] || [ "$(LIB_ALL)" ]; then \
-		$(LN_RSF) ./include/my_fd.h ../../include; \
-	fi
+	@$(LN_RSF) ./include/my ../../include
 
 build_all: $(OBJ)
 	$(AR_RC) $(TARGET) $(OBJ)

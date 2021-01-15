@@ -4,11 +4,10 @@
 ** File description:
 ** Source code
 */
-#include <defmy.h>
-#include <my_str.h>
+#include <my/str.h>
 #include <my.h>
 
-static int get_joined_length(char **arr, char *delimiter)
+static int get_joined_length(str_t *arr, str_t delimiter)
 {
     int len = 0;
     int delimiter_len = my_strlen(delimiter);
@@ -21,9 +20,9 @@ static int get_joined_length(char **arr, char *delimiter)
     return (len);
 }
 
-char *my_strjoin(char **arr, char *delimiter)
+mut_str_t my_strjoin(str_t *arr, str_t delimiter)
 {
-    char *tmp;
+    str_t tmp;
     int len = get_joined_length(arr, delimiter);
     char *output = malloc(sizeof(char) * (len + 1));
     int i = 0;

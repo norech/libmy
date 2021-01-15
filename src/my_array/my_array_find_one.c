@@ -4,9 +4,8 @@
 ** File description:
 ** Source code
 */
-#include <defmy.h>
 #include <my.h>
-#include <my_array.h>
+#include <my/array.h>
 
 void *my_array_find_one(size_t element_size, void *array,
     bool (*cmp)(size_t element_size, void *element, void *param), void *param)

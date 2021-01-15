@@ -5,8 +5,9 @@
 ** Search a string in another
 */
 #include <my.h>
+#include <my/types.h>
 
-char *my_strstr(char *str, char const *to_find)
+strpos_t my_strstr(str_t str, str_t to_find)
 {
     if (str[0] == '\0' && to_find[0] == '\0') {
         return (&str[0]);
@@ -23,5 +24,5 @@ char *my_strstr(char *str, char const *to_find)
             return (&str[i]);
         i++;
     }
-    return ((void *)0);
+    return (NULL);
 }

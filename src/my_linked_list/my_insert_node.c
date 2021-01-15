@@ -4,8 +4,8 @@
 ** File description:
 ** Source code
 */
-#include <my_linked_list.h>
-#include <defmy.h>
+#include <my/linked_list.h>
+#include <my/def.h>
 
 void my_insert_node(void **head_ptr, int index, void *element_ptr)
 {

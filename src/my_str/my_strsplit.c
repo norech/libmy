@@ -8,8 +8,8 @@
 #include <my.h>
 #include <stdlib.h>
 
-static void fill_words_lengths(char const *str,
-    int *lengths_ptr, char *separator)
+static void fill_words_lengths(str_t str,
+    int *lengths_ptr, str_t separator)
 {
     int i = 0;
     int j = 0;
@@ -30,8 +30,8 @@ static void fill_words_lengths(char const *str,
     }
 }
 
-static void fill_words(char **words, char const *str,
-    int const *lengths, char *separator)
+static void fill_words(mut_str_t *words, str_t str,
+    int const *lengths, str_t separator)
 {
     int i = 0;
     int j = 0;
@@ -55,7 +55,7 @@ static void fill_words(char **words, char const *str,
     words[j][word_pos] = '\0';
 }
 
-static int count_words(char const *str, char *separator)
+static int count_words(str_t str, str_t separator)
 {
     int i = 1;
     int sep_len = my_strlen(separator);
@@ -71,7 +71,7 @@ static int count_words(char const *str, char *separator)
     return (i);
 }
 
-char **my_strsplit(char const *str, char *separator)
+mut_str_t *my_strsplit(str_t str, str_t separator)
 {
     int words_count = count_words(str, separator);
     int *lengths = malloc(sizeof(int) * (words_count));

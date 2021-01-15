@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-char *my_strtake(char *str, int index, int count)
+mut_str_t my_strtake(mut_str_t str, int index, int count)
 {
     int len = my_strlen(str);
     char copy[len + 1];

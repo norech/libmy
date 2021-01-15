@@ -4,7 +4,7 @@
 ** File description:
 ** Puts a string
 */
-#include <my_fd.h>
+#include <my/io.h>
 
 int my_fd_putstr(int fd, char const *str)
 {
