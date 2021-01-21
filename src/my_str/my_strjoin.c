@@ -27,6 +27,8 @@ mut_str_t my_strjoin(str_t *arr, str_t delimiter)
     char *output = malloc(sizeof(char) * (len + 1));
     int i = 0;
 
+    if (output == NULL)
+        return (NULL);
     FOREACH (arr, j) {
         tmp = arr[j];
         if (i != 0)

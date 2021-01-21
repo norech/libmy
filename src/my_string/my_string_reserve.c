@@ -19,6 +19,10 @@ void my_string_reserve(string_t *self, usize_t size)
         self->capacity += sizeof(char) * MAX(128, expand_size + 1);
         tmp = self->as_str;
         self->as_str = malloc(self->capacity);
+        if (self->as_str == NULL) {
+            free(tmp);
+            return;
+        }
         my_strcpy(self->as_str, tmp);
         free(tmp);
     }
