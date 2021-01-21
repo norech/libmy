@@ -29,5 +29,5 @@ int my_itoa(char *output, int nb, int radix)
         output[i++] = '-';
     output[i] = '\0';
     my_revstr(output);
-    return (0);
+    return (i);
 }

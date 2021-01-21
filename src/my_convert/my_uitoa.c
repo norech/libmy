@@ -21,5 +21,5 @@ int my_uitoa(char *output, unsigned int nb, int radix)
     output[i++] = base[nb % radix];
     output[i] = '\0';
     my_revstr(output);
-    return (0);
+    return (i);
 }

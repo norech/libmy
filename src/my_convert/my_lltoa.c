@@ -29,5 +29,5 @@ int my_lltoa(char *output, long long nb, int radix)
         output[i++] = '-';
     output[i] = '\0';
     my_revstr(output);
-    return (0);
+    return (i);
 }

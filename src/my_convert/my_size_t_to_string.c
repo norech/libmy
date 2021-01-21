@@ -22,5 +22,5 @@ int my_size_t_to_string(char *output, size_t nb, int radix)
     output[i++] = base[nb % radix];
     output[i] = '\0';
     my_revstr(output);
-    return (0);
+    return (i);
 }
