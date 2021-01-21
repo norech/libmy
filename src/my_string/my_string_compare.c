@@ -8,7 +8,7 @@
 #include <my/string.h>
 #include <my/str.h>
 
-bool my_string_compare(string_t *s1, string_t *s2)
+int my_string_compare(string_t const *s1, string_t const *s2)
 {
     return (my_strcmp(s1->as_str, s2->as_str));
 }

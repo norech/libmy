@@ -236,7 +236,13 @@ TEST_FILES = \
 	$(TESTDIR)/test_my_count_nodes.c \
 	$(TESTDIR)/test_my_find_previous_node.c \
 	$(TESTDIR)/test_my_get_last_node.c \
-	$(TESTDIR)/test_my_remove_node.c
+	$(TESTDIR)/test_my_remove_node.c \
+	$(TESTDIR)/my_string/test_my_string_append.c \
+	$(TESTDIR)/my_string/test_my_string_create.c \
+	$(TESTDIR)/my_string/test_my_string_compare.c \
+	$(TESTDIR)/my_string/test_my_string_indexof.c \
+	$(TESTDIR)/my_string/test_my_string_push_str.c \
+	$(TESTDIR)/my_string/test_my_string_assign.c
 
 TARGET = libmy.a
 

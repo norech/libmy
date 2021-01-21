@@ -28,7 +28,7 @@ string_t *my_string_create_with_capacity(string_t *s, usize_t capacity);
 void my_string_destroy(string_t *s);
 string_t *my_string_append(string_t *s, string_t const *str);
 isize_t my_string_indexof(string_t const *s, string_t const *str);
-bool my_string_equals(string_t const *s1, string_t const *s2);
+int my_string_compare(string_t const *s1, string_t const *s2);
 string_t *my_string_assign(string_t *s, str_t str);
 usize_t my_string_push(string_t *s, char c);
 usize_t my_string_push_str(string_t *s, str_t str);
