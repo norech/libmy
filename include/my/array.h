@@ -9,6 +9,12 @@
 #ifndef MY_ARRAY_H
 #define MY_ARRAY_H
 
+struct qsort_params {
+    size_t size;
+    void *matches;
+    bool (*cmp)(size_t *size, void *a, void *b);
+};
+
 #define ARRAY_FIND_ONE_IN(arr, cmp, value) \
     my_array_find_one(sizeof(arr[0]), arr, &cmp, (void *)(value))
 
@@ -51,6 +57,10 @@ void *my_array_find_one(size_t element_size, void *array,
 
 void **my_array_find_all(size_t element_size, void *array,
     bool (*cmp)(size_t element_size, void *element, void *param), void *param);
+
+void my_array_swap(size_t size, void *array, int i, int j);
+
+void my_array_qsort(struct qsort_params *params, int low, int high);
 
 bool with_value(size_t element_size, void *element, void *ref);
 
