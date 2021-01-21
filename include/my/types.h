@@ -28,8 +28,14 @@ typedef size_t usize_t;
 typedef float f32_t;
 typedef double f64_t;
 
+#ifndef SOFT_TYPES
 typedef char const * strpos_t;
 typedef char const * str_t;
+#else //SOFT_TYPES
+typedef char * strpos_t;
+typedef char * str_t;
+#endif //SOFT_TYPES
+
 typedef char * mut_str_t;
 
 typedef void * any_t;

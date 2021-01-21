@@ -28,7 +28,7 @@
 #define ERR(typename, ...) \
     ((RES(typename)){ 0, 1, .err=(0, ## __VA_ARGS__) })
 
-#define RES_UNWRAP_DEFAULT(res, default) ((res).is_ok ? (res).value : (default))
+#define RES_UNWRAP_OR(res, default) ((res).is_ok ? (res).value : (default))
 #define RES_UNWRAP(res) ((res).is_ok ? (res).value : (res).err)
 
 INIT_RES(void, char);

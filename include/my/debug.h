@@ -9,12 +9,17 @@
 #define MY_DEBUG_H
 #include <my/def.h>
 
-void my_array_print_floatarr(float *arr, ssize_t size);
-void my_array_print_strarr(char **arr, ssize_t size);
-void my_array_print_nbarr(size_t element_size, char* format, void *arr,
-    ssize_t size);
-void my_array_print_u_nbarr(unsigned long long *arr, ssize_t size);
-int my_printf(char *s, ...);
+void   my_array_print_floatarr(float *arr, ssize_t size);
+
+void   my_array_print_strarr(char **arr, ssize_t size);
+
+void   my_array_print_nbarr(size_t element_size, char* format, void *arr,
+        ssize_t size);
+
+void   my_array_print_u_nbarr(unsigned long long *arr, ssize_t size);
+
+int    my_printf(char *s, ...);
+
 
 #define DEBUG_PRINTF(format, ...) \
     my_printf("\e[32m%s:%d :\e[36m " format "\e[0m\n", \

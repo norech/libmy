@@ -9,8 +9,11 @@
 #define MY_IO_H
 
 int my_fd_put_digit(int fd, int i);
+
 int my_fd_putchar(int fd, char c);
+
 int my_fd_putstr(int fd, char const *str);
+
 
 #ifndef STDOUT_FILENO
     #define STDIN_FILENO  0
