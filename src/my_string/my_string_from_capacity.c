@@ -14,6 +14,8 @@ string_t *my_string_from_capacity(usize_t capacity)
     string_t *s = malloc(sizeof(string_t));
     mut_str_t str = malloc(sizeof(char) * capacity);
 
+    if (s == NULL || str == NULL)
+        return (NULL);
     str[0] = '\0';
     s->is_allocated = true;
     s->as_str = str;

@@ -75,8 +75,14 @@ mut_str_t *my_strsplit(str_t str, str_t separator)
 {
     int words_count = count_words(str, separator);
     int *lengths = malloc(sizeof(int) * (words_count));
+    char **words;
+
+    if (lengths == NULL)
+        return (NULL);
     fill_words_lengths(str, lengths, separator);
-    char **words = malloc(sizeof(char *) * (words_count + 1));
+    words = malloc(sizeof(char *) * (words_count + 1));
+    if (words == NULL)
+        return (NULL);
     fill_words(words, str, lengths, separator);
     words[words_count] = NULL;
     free(lengths);

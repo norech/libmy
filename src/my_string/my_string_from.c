@@ -13,6 +13,8 @@ string_t *my_string_from(str_t str)
 {
     string_t *s = malloc(sizeof(string_t));
 
+    if (s == NULL)
+        return (NULL);
     s->is_allocated = true;
     s->as_str = my_strdup(str);
     s->length = my_strlen(str);

@@ -18,6 +18,8 @@ void *my_array_merge(size_t element_size, void **elements)
     FOREACH (elements, i)
         len += my_array_count(element_size, elements[i]);
     output = malloc(element_size * (len + 1));
+    if (output == NULL)
+        return (NULL);
     FOREACH (elements, i) {
         arr_len = my_array_count(element_size, elements[i]);
         for (int j = 0; j < arr_len; j++) {

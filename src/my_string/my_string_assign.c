@@ -19,6 +19,8 @@ string_t *my_string_assign(string_t *s, str_t str)
         s->as_str = malloc(sizeof(char) * (len + 1));
         s->capacity = len + 1;
     }
+    if (s->as_str == NULL)
+        return (NULL);
     my_strcpy(s->as_str, str);
     return (s);
 }

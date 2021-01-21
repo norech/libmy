@@ -37,14 +37,11 @@ static int count_args(int argc, char **argv)
     return (count);
 }
 
-parsed_args_t my_parse_args(int argc, char **argv)
+static void fill(int argc, char **argv, char *flags, char **args)
 {
-    char *arg;
-    int args_count = count_args(argc, argv);
-    char *flags = malloc(sizeof(char) * 256);
-    char **args = malloc(sizeof(char *) * (args_count + 1));
     int i = 0;
     int j = 0;
+    char *arg;
 
     my_memset(flags, 0, 256);
     while (i <= argc) {
@@ -58,5 +55,16 @@ parsed_args_t my_parse_args(int argc, char **argv)
         i++;
     }
     args[j] = NULL;
+}
+
+parsed_args_t my_parse_args(int argc, char **argv)
+{
+    int args_count = count_args(argc, argv);
+    char *flags = malloc(sizeof(char) * 256);
+    char **args = malloc(sizeof(char *) * (args_count + 1));
+
+    if (flags == NULL || args == NULL)
+        return ((parsed_args_t) { 0, NULL, NULL });
+    fill(argc, argv, flags, args);
     return ((parsed_args_t) { args_count, args, flags });
 }

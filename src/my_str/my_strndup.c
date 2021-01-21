@@ -10,6 +10,9 @@
 char *my_strndup(char const *src, int n)
 {
     char *dup = malloc(sizeof(char) * (n + 1));
+
+    if (dup == NULL)
+        return (NULL);
     my_strncpy(dup, src, n);
     dup[n] = '\0';
     return (dup);

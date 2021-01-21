@@ -22,6 +22,8 @@ char *my_fd_getnextline(int fd)
             break;
         tmp = output;
         output = malloc(sizeof(char) * (my_strlen(output) + 2));
+        if (output == NULL)
+            return (free(tmp), NULL);
         my_strcpy(output, tmp);
         my_strncat(output, &buffer, 1);
         free(tmp);
