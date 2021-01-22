@@ -77,6 +77,8 @@ mut_str_t  my_strconcat(int argc, ...);
 
 mut_str_t *my_strsplit(str_t str, str_t delimiter);
 
+mut_str_t *my_strsplit_fnc(str_t str, bool (*delim)(strpos_t pos));
+
 
 static inline bool is_char_printable(char c)
 {

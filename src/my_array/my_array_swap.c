@@ -6,6 +6,7 @@
 */
 
 #include <unistd.h>
+#include <my.h>
 
 void my_array_swap(size_t size, void *array, int i, int j)
 {

@@ -104,6 +104,8 @@ SRC_ARRAY = \
 	src/my_array/my_array_find_one.c \
 	src/my_array/my_array_find_all.c \
 	src/my_array/my_arraydup.c \
+	src/my_array/my_array_qsort.c \
+	src/my_array/my_array_swap.c \
 	src/my_array/cmp/with_value.c
 
 SRC_LINKED_LIST = \
@@ -152,6 +154,7 @@ SRC_STR = \
 	src/my_str/my_str_isprintable.c \
 	src/my_str/my_str_isupper.c \
 	src/my_str/my_strjoin.c \
+	src/my_str/my_strsplit_fnc.c \
 	src/my_str/my_strconcat.c \
 	src/my_str/my_strcount.c \
 	src/my_str/my_strtake.c

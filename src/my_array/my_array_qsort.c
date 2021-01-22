@@ -15,7 +15,7 @@ static int partition(struct qsort_params *params, int low, int high)
     int i = low - 1;
 
     for (int j = low; j <= high - 1; j++) {
-        if (params->cmp(size, params->matches + j * size, pivot)) {
+        if (!params->cmp(params, params->matches + j * size, pivot)) {
             i++;
             my_array_swap(size, params->matches, i, j);
         }

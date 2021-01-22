@@ -74,6 +74,7 @@ static int count_words(str_t str, str_t separator)
 mut_str_t *my_strsplit(str_t str, str_t separator)
 {
     int words_count = count_words(str, separator);
+    my_printf("%d", words_count);
     int *lengths = malloc(sizeof(int) * (words_count));
     char **words;
 

@@ -12,7 +12,8 @@
 struct qsort_params {
     size_t size;
     void *matches;
-    bool (*cmp)(size_t *size, void *a, void *b);
+    bool (*cmp)(struct qsort_params *params, void *a, void *b);
+    void *additional_data;
 };
 
 #define ARRAY_FIND_ONE_IN(arr, cmp, value) \
