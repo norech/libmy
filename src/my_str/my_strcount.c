@@ -7,7 +7,7 @@
 #include <my.h>
 #include <stdarg.h>
 
-int my_strcount(char const *haystack, char const *needle)
+int my_strcount(str_t haystack, str_t needle)
 {
     int count = 0;
     int i = 0;

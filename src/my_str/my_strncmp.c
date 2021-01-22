@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-int my_strncmp(char const *s1, char const *s2, int n)
+int my_strncmp(str_t s1, str_t s2, int n)
 {
     int i = 0;
 

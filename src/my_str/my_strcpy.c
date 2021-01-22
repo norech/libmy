@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-char *my_strcpy(char *dest, char const *src)
+mut_str_t my_strcpy(mut_str_t dest, str_t src)
 {
     int i = 0;
     while (src[i] != '\0') {

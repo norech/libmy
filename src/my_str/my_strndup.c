@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <my.h>
 
-char *my_strndup(char const *src, int n)
+mut_str_t my_strndup(str_t src, int n)
 {
     char *dup = malloc(sizeof(char) * (n + 1));
 

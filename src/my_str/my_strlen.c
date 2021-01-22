@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-int my_strlen(const char *str)
+int my_strlen(str_t str)
 {
     int i = 0;
 

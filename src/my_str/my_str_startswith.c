@@ -7,7 +7,7 @@
 #include <my.h>
 #include <stdbool.h>
 
-bool my_str_startswith(char const *haystack, char const *needle)
+bool my_str_startswith(str_t haystack, str_t needle)
 {
     while (*needle != '\0' && *haystack == *needle) {
         haystack++;

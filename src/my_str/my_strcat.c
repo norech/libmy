@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-char *my_strcat(char *dest, char const *src)
+mut_str_t my_strcat(mut_str_t dest, str_t src)
 {
     int len = my_strlen(dest);
     int i = 0;

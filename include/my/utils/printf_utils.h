@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdbool.h>
+#include <my/types.h>
 
 #ifndef MY_PRINTF_UTILS_H
 #define MY_PRINTF_UTILS_H
@@ -16,7 +17,7 @@ typedef struct printf_flag_parameters {
     char amplifiers[16];
     int width;
     int precision;
-    char const *length_flag;
+    str_t length_flag;
 } printf_flag_parameters_t;
 
 bool is_token_present(char **s, char token);
@@ -47,12 +48,12 @@ typedef struct print_flag_element {
     char flag;
     int (*method)(va_list *ap, printf_flag_parameters_t params);
     char *amplifiers;
-    char const **length_flags;
+    str_t *length_flags;
 } print_flag_element_t;
 
 typedef struct print_scanned_flag {
     print_flag_element_t flag;
-    char const *length_flag;
+    str_t length_flag;
 } print_scanned_flag_t;
 
 #define ABS(x) (x < 0 ? -x : x)

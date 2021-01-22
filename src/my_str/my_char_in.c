@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-bool my_char_in(char const *haystack, char needle)
+bool my_char_in(str_t haystack, char needle)
 {
     int i = 0;
     while (haystack[i] != '\0') {

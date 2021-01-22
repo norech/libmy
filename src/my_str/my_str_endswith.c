@@ -5,9 +5,10 @@
 ** Check if ends with
 */
 #include <my.h>
+#include <my/types.h>
 #include <stdbool.h>
 
-bool my_str_endswith(char const *haystack, char const *needle)
+bool my_str_endswith(str_t haystack, str_t needle)
 {
     int i = my_strlen(haystack);
     int j = my_strlen(needle);

@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-bool my_str_isnum(char const *str)
+bool my_str_isnum(str_t str)
 {
     int i = 0;
 

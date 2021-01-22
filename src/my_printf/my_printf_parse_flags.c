@@ -10,8 +10,8 @@
 #include <my/utils/printf_utils.h>
 #include <my.h>
 
-static const char *default_len_mod[] = {""};
-static const char *numeric_len_mod[] = {"l", "ll", "h", "hh", ""};
+static str_t default_len_mod[] = {""};
+static str_t numeric_len_mod[] = {"l", "ll", "h", "hh", ""};
 
 static const print_flag_element_t print_flags[] = {
     {'s', &my_printf_putstr, "-", default_len_mod},
@@ -44,12 +44,12 @@ static bool handle_n_flag(print_flag_element_t flag, va_list *ap,
     return (true);
 }
 
-static char const *parse_flag_type(char **s, print_flag_element_t flag)
+static str_t parse_flag_type(char **s, print_flag_element_t flag)
 {
-    char const *output = NULL;
+    str_t output = NULL;
     int flaglen;
     int i = 0;
-    const char **length_flags = flag.length_flags;
+    str_t *length_flags = flag.length_flags;
 
     while (length_flags[i]) {
         flaglen = my_strlen(length_flags[i]);

@@ -6,7 +6,7 @@
 */
 #include <my.h>
 
-bool my_str_islower(char const *str)
+bool my_str_islower(str_t str)
 {
     int i = 0;
 

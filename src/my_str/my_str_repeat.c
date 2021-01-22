@@ -7,7 +7,7 @@
 #include <my.h>
 #include <stdarg.h>
 
-char *my_str_repeat(char const *str, int count)
+char *my_str_repeat(str_t str, int count)
 {
     char *output = malloc(sizeof(char) * (my_strlen(str) * count + 1));
 

@@ -11,7 +11,7 @@ AR_RC ?= ar rc
 
 LN_RSF ?= ln -rsf
 
-CFLAGS = -W -Wall -Werror -I./include -g
+CFLAGS = -W -Wall -Werror -I./include -g $(LIB_GCC_ARGS)
 
 CFLAGS_TEST = $(CFLAGS) -Wno-stringop-truncation -Wno-error=format -lcriterion --coverage
 
