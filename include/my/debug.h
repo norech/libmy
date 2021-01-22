@@ -18,7 +18,7 @@ void   my_array_print_nbarr(size_t element_size, char* format, void *arr,
 
 void   my_array_print_u_nbarr(unsigned long long *arr, ssize_t size);
 
-int    my_printf(char *s, ...);
+int    my_dprintf(fd_t, char *s, ...);
 
 
 #define DEBUG_PRINTF(format, ...) \
