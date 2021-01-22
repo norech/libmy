@@ -5,6 +5,7 @@
 ** Source code
 */
 #include <my.h>
+#include <my/io.h>
 #include <my/utils/printf_utils.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -17,11 +18,11 @@ int my_printf_put_hexa_upper(va_list *ap, printf_flag_parameters_t params)
     char output[my_longlonglen(value, 16)];
 
     if (my_char_in(params.amplifiers, '#'))
-        len += my_putstr("0X");
+        len += my_fd_putstr(params.fd, "0X");
     if (params.precision != -1)
         return (-2);
     my_lltoa(output, value, 16);
     my_strupcase(output);
-    len += my_putstr(output);
+    len += my_fd_putstr(params.fd, output);
     return (len);
 }

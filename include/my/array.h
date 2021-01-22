@@ -5,6 +5,7 @@
 ** Source code
 */
 #include <unistd.h>
+#include <my/types.h>
 
 #ifndef MY_ARRAY_H
 #define MY_ARRAY_H

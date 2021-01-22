@@ -77,9 +77,14 @@ SRC_IO = \
 	src/my_fd/my_fd_put_digit.c \
 	src/my_fd/my_fd_putchar.c \
 	src/my_fd/my_fd_putstr.c \
+	src/my_fd/my_fd_put_float.c \
+	src/my_fd/my_fd_put_nbr_base.c \
+	src/my_fd/my_fd_put_nbr.c \
+	src/my_fd/my_fd_put_u_nbr.c \
 
 SRC_FORMAT = \
 	src/my_printf/my_printf.c \
+	src/my_printf/my_dprintf.c \
 	src/my_printf/my_printf_convert.c \
 	src/my_printf/my_printf_parse_flags.c \
 	src/my_printf/my_printf_parse_tokens.c \
@@ -254,7 +259,6 @@ TARGET_TEST = unit_tests
 ifeq ("$(LIB_COMMON)","1")
 	SRC += $(SRC_COMMON)
 	OBJ += $(OBJ_COMMON)
-	LIB_MATH = 1
 endif
 ifeq ("$(LIB_DEBUG)","1")
 	SRC += $(SRC_DEBUG)
@@ -262,15 +266,16 @@ ifeq ("$(LIB_DEBUG)","1")
 	LIB_ARRAY = 1
 	LIB_FORMAT = 1
 endif
-ifeq ("$(LIB_IO)","1")
-	SRC += $(SRC_IO)
-	OBJ += $(OBJ_IO)
-endif
 ifeq ("$(LIB_FORMAT)","1")
 	SRC += $(SRC_FORMAT)
 	OBJ += $(OBJ_FORMAT)
 	LIB_STR = 1
 	LIB_CONVERT = 1
+	LIB_IO = 1
+endif
+ifeq ("$(LIB_IO)","1")
+	SRC += $(SRC_IO)
+	OBJ += $(OBJ_IO)
 endif
 ifeq ("$(LIB_MATH)","1")
 	SRC += $(SRC_MATH)

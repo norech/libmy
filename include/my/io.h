@@ -8,12 +8,25 @@
 #ifndef MY_IO_H
 #define MY_IO_H
 
-int my_fd_put_digit(int fd, int i);
+#include <my/types.h>
 
-int my_fd_putchar(int fd, char c);
+int my_printf(char *s, ...);
 
-int my_fd_putstr(int fd, char const *str);
+int my_dprintf(fd_t fd, char *s, ...);
 
+int my_fd_put_digit(fd_t fd, int i);
+
+int my_fd_putchar(fd_t fd, char c);
+
+int my_fd_putstr(fd_t fd, char const *str);
+
+int my_fd_put_float(fd_t fd, float nb, int digits);
+
+int my_fd_put_nbr_base(fd_t fd, long long nb, int radix);
+
+int my_fd_put_nbr(fd_t fd, long long nb);
+
+int my_fd_put_u_nbr(fd_t fd, unsigned long long nb);
 
 #ifndef STDOUT_FILENO
     #define STDIN_FILENO  0

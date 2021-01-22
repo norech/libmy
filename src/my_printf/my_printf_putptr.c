@@ -5,6 +5,7 @@
 ** Source code
 */
 #include <my.h>
+#include <my/io.h>
 #include <my/utils/printf_utils.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -19,12 +20,12 @@ int my_printf_putptr(va_list *ap, printf_flag_parameters_t params)
     if (params.precision != -1)
         return (-2);
     if (value == NULL) {
-        len += my_putstr("(nil)");
+        len += my_fd_putstr(params.fd, "(nil)");
         return (len);
     }
-    len += my_putstr("0x");
+    len += my_fd_putstr(params.fd, "0x");
     my_ultoa(output, (unsigned long)value, 16);
     my_strlowcase(output);
-    len += my_putstr(output);
+    len += my_fd_putstr(params.fd, output);
     return (len);
 }

@@ -12,7 +12,7 @@
 #include <my/utils/printf_utils.h>
 #include <stdio.h>
 
-int my_printf(char *s, ...)
+int my_dprintf(fd_t fd, char *s, ...)
 {
     int chars = 0;
     va_list ap;
@@ -21,10 +21,10 @@ int my_printf(char *s, ...)
     while (*s) {
         if (*s == '%') {
             s++;
-            chars += parse_flag(1, &ap, &s, chars);
+            chars += parse_flag(fd, &ap, &s, chars);
             continue;
         }
-        chars += write(1, s, 1);
+        chars += write(fd, s, 1);
         s++;
     }
     va_end(ap);

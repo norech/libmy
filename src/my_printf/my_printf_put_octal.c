@@ -5,6 +5,7 @@
 ** Source code
 */
 #include <my.h>
+#include <my/io.h>
 #include <my/utils/printf_utils.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -17,10 +18,10 @@ int my_printf_put_octal(va_list *ap, printf_flag_parameters_t params)
     int len = 0;
 
     if (my_char_in(params.amplifiers, '#'))
-        len += my_putstr("0");
+        len += my_fd_putstr(params.fd, "0");
     if (params.precision != -1)
         return (-2);
     my_lltoa(output, value, 8);
-    len += my_putstr(output);
+    len += my_fd_putstr(params.fd, output);
     return (len);
 }

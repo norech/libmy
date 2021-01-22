@@ -5,8 +5,9 @@
 ** Source code
 */
 #include <my/def.h>
-#include <my.h>
+#include <my/io.h>
 #include <my/array.h>
+#include <my/common.h>
 #include <stdlib.h>
 
 

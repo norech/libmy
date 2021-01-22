@@ -5,6 +5,7 @@
 ** Source code
 */
 #include <my.h>
+#include <my/io.h>
 #include <my/utils/printf_utils.h>
 #include <stdarg.h>
 
@@ -38,7 +39,7 @@ static int put_padding(long long value, printf_flag_parameters_t *params)
 
     if (!my_char_in(params->amplifiers, '0')) {
         for (; i < max; i++) {
-            len += my_putchar(' ');
+            len += my_fd_putchar(params->fd, ' ');
         }
     }
     return (len);
@@ -55,7 +56,7 @@ static int put_zeroes(long long value, printf_flag_parameters_t *params)
     if (my_char_in(params->amplifiers, '0')
         || params->precision != -1) {
         for (; i < max; i++) {
-            len += my_putchar('0');
+            len += my_fd_putchar(params->fd, '0');
         }
     }
     return (len);
@@ -67,11 +68,11 @@ static int put_sign(long long value, printf_flag_parameters_t *params)
 
     if (value >= 0) {
         if (my_char_in(params->amplifiers, '+'))
-            len += my_putchar('+');
+            len += my_fd_putchar(params->fd, '+');
         if (my_char_in(params->amplifiers, ' '))
-            len += my_putchar(' ');
+            len += my_fd_putchar(params->fd, ' ');
     } else {
-        len += my_putchar('-');
+        len += my_fd_putchar(params->fd, '-');
     }
     return (len);
 }
@@ -93,7 +94,7 @@ int my_printf_put_nbr(va_list *ap, printf_flag_parameters_t params)
     len += put_sign(value, &params);
     if (show_zeroes)
         len += put_zeroes(value, &params);
-    len += my_put_nbr(ABS(value));
+    len += my_fd_put_nbr(params.fd, ABS(value));
     if (!show_zeroes && my_char_in(params.amplifiers, '-'))
         len += put_padding(value, &params);
     return (len);

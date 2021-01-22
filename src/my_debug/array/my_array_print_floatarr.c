@@ -5,6 +5,7 @@
 ** Source code
 */
 #include <my/def.h>
+#include <my/io.h>
 #include <my.h>
 
 void my_array_print_floatarr(float *arr, ssize_t size)

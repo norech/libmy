@@ -5,6 +5,7 @@
 ** Source code
 */
 #include <my.h>
+#include <my/io.h>
 #include <my/utils/printf_utils.h>
 #include <stdarg.h>
 
@@ -35,7 +36,7 @@ static int put_padding(unsigned long long value,
 
     if (!my_char_in(params->amplifiers, '0')) {
         for (; i < max; i++) {
-            len += my_putchar(' ');
+            len += my_fd_putchar(params->fd, ' ');
         }
     }
     return (len);
@@ -53,7 +54,7 @@ static int put_zeroes(unsigned long long value,
     if (my_char_in(params->amplifiers, '0')
         || params->precision != -1) {
         for (; i < max; i++) {
-            len += my_putchar('0');
+            len += my_fd_putchar(params->fd, '0');
         }
     }
     return (len);
@@ -64,9 +65,9 @@ static int put_sign(printf_flag_parameters_t *params)
     int len = 0;
 
     if (my_char_in(params->amplifiers, '+'))
-        len += my_putchar('+');
+        len += my_fd_putchar(params->fd, '+');
     if (my_char_in(params->amplifiers, ' '))
-        len += my_putchar(' ');
+        len += my_fd_putchar(params->fd, ' ');
     return (len);
 }
 
@@ -87,7 +88,7 @@ int my_printf_put_unsigned_nbr(va_list *ap, printf_flag_parameters_t params)
     len += put_sign(&params);
     if (show_zeroes)
         len += put_zeroes(value, &params);
-    len += my_put_u_nbr(value);
+    len += my_fd_put_u_nbr(params.fd, value);
     if (!show_zeroes && my_char_in(params.amplifiers, '-'))
         len += put_padding(value, &params);
     return (len);

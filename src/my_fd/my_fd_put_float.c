@@ -5,6 +5,7 @@
 ** Print a floating number
 */
 #include <my.h>
+#include <my/io.h>
 
 static int simplified_pow(int nb, int p)
 {
@@ -14,7 +15,7 @@ static int simplified_pow(int nb, int p)
     return (result * nb);
 }
 
-int my_put_float(float nb, int digits)
+int my_fd_put_float(fd_t fd, float nb, int digits)
 {
     int len = 0;
     int power = simplified_pow(10, digits);
@@ -24,12 +25,12 @@ int my_put_float(float nb, int digits)
 
     my_put_nbr((int) nb);
     if (digits > 0) {
-        len += my_putchar('.');
+        len += my_fd_putchar(fd, '.');
         while (i < zeros_count) {
-            len += my_put_digit(0);
+            len += my_fd_put_digit(fd, 0);
             i++;
         }
-        len += my_put_nbr(decimals);
+        len += my_fd_put_nbr(fd, decimals);
     }
     return (len);
 }

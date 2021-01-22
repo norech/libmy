@@ -76,6 +76,8 @@ void          my_swap_ptr(void **e1, void **e2);
 
 void          my_free_array(void **array);
 
+int           my_printf(char *s, ...);
+
 parsed_args_t my_parse_args(int argc, char **argv);
 
 void         *my_memset(void *dest, char fill, size_t size);

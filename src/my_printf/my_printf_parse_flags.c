@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <my/utils/printf_utils.h>
 #include <my.h>
+#include <my/io.h>
 
 static str_t default_len_mod[] = {""};
 static str_t numeric_len_mod[] = {"l", "ll", "h", "hh", ""};
@@ -87,20 +88,21 @@ static print_scanned_flag_t scan_flag_element(char **s)
     return (scanned);
 }
 
-static int parse_format_string(va_list *ap, char **s, int bytes_written)
+static int parse_format_string(fd_t fd, va_list *ap, char **s,
+    int bytes_written)
 {
     int i = 0;
     print_scanned_flag_t scanned;
     printf_flag_parameters_t params;
 
     parse_tokens_taken_in_list(params.amplifiers, s, "-+# 0");
+    params.fd = fd;
     params.width = parse_number(s);
     params.precision = (is_token_present(s, '.') ? parse_number(s) : -1);
     scanned = scan_flag_element(s);
     params.length_flag = scanned.length_flag;
-    if (scanned.flag.flag == '\0') {
+    if (scanned.flag.flag == '\0')
         return (-2);
-    }
     while (params.amplifiers[i]) {
         if (!my_char_in(scanned.flag.amplifiers, params.amplifiers[i]))
             return (-2);
@@ -111,20 +113,20 @@ static int parse_format_string(va_list *ap, char **s, int bytes_written)
     return (scanned.flag.method(ap, params));
 }
 
-int parse_flag(va_list *ap, char **s, int bytes_written)
+int parse_flag(fd_t fd, va_list *ap, char **s, int bytes_written)
 {
     char *start = *s;
     int return_value = -2;
 
     if (**s == '\0')
         return (0);
-    return_value = parse_format_string(ap, s, bytes_written);
+    return_value = parse_format_string(fd, ap, s, bytes_written);
     if (return_value != -2)
         return (return_value);
     start--;
     return_value = 0;
     while (start < *s) {
-        return_value += my_putchar(*start);
+        return_value += my_fd_putchar(fd, *start);
         start++;
     }
     return (return_value);

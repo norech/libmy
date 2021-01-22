@@ -17,13 +17,14 @@ typedef struct printf_flag_parameters {
     char amplifiers[16];
     int width;
     int precision;
+    fd_t fd;
     str_t length_flag;
 } printf_flag_parameters_t;
 
 bool is_token_present(char **s, char token);
 char* parse_tokens_taken_in_list(char *output, char **s, char *list);
 long long parse_number(char **s);
-int parse_flag(va_list *ap, char **s, int bytes_written);
+int parse_flag(fd_t fd, va_list *ap, char **s, int bytes_written);
 
 long long converted_va_arg_nbr(va_list *ap, printf_flag_parameters_t params);
 unsigned long long converted_va_arg_unsigned_nbr(va_list *ap,

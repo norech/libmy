@@ -5,6 +5,7 @@
 ** Source code
 */
 #include <my.h>
+#include <my/io.h>
 #include <my/utils/printf_utils.h>
 #include <stdarg.h>
 
@@ -15,5 +16,5 @@ int my_printf_putstr(va_list *ap, printf_flag_parameters_t params)
     if (params.precision != -1)
         return (-2);
     value = va_arg(*ap, char *);
-    return (my_putstr(value));
+    return (my_fd_putstr(params.fd, value));
 }
