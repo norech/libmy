@@ -22,7 +22,7 @@ int    my_printf(char *s, ...);
 
 
 #define DEBUG_PRINTF(format, ...) \
-    my_printf("\e[32m%s:%d :\e[36m " format "\e[0m\n", \
+    my_dprintf(2, "\e[32m%s:%d :\e[36m " format "\e[0m\n", \
         __FILE__, __LINE__, ## __VA_ARGS__)
 
 #define Z__DEBUG__PRINT_ARRAY_SIZED(x, size) \

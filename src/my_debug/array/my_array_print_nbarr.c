@@ -21,9 +21,9 @@ void my_array_print_nbarr(size_t element_size, char* format, void *arr,
         size = my_array_count(element_size, bytes);
     for (int i = 0; i < size; i++) {
         if (i != 0)
-            my_printf(", ");
+            my_dprintf(2, ", ");
         my_memcpy(&nbr, bytes, element_size);
-        my_printf(format, nbr);
+        my_dprintf(2, format, nbr);
         bytes += element_size;
     }
 }
