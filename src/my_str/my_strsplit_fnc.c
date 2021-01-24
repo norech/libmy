@@ -83,7 +83,6 @@ mut_str_t *my_strsplit_fnc(str_t str, bool (*delim)(strpos_t pos))
 
     while (delim(str))
         str++;
-
     words_count = (*str == '\0') ? 0 : count_words(str, delim);
     words = malloc(sizeof(str_t) * (words_count + 1));
     if (words == NULL)
