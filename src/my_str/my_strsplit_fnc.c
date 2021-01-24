@@ -77,10 +77,15 @@ static int count_words(str_t str, bool (*delim)(strpos_t pos))
 
 mut_str_t *my_strsplit_fnc(str_t str, bool (*delim)(strpos_t pos))
 {
-    int words_count = count_words(str, delim);
-    int *lengths = malloc(sizeof(int) * words_count);
-    mut_str_t *words = malloc(sizeof(str_t) * (words_count + 1));
+    int words_count;
+    int *lengths;
+    mut_str_t *words;
 
+    while (delim(str))
+        str++;
+    words_count = count_words(str, delim);
+    lengths = malloc(sizeof(int) * words_count);
+    words = malloc(sizeof(str_t) * (words_count + 1));
     if (lengths == NULL || words == NULL)
         return (NULL);
     fill_words_lengths(str, lengths, delim);
